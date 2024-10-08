@@ -1,0 +1,33 @@
+import React from 'react'
+import { FaFacebookF } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+
+import { FaTwitter } from "react-icons/fa";
+const Hero = () => {
+    return (
+        <div>
+            <div className="hero">
+                <div className="overlay  ml-[30%] ">
+                    {/* <div className="overlay absolute justify-center items-center"> */}
+                    <h1 className='text-white mt-[10%] text-[50px] font-extrabold absolute justify-center items-center '>E-libray Management App</h1>
+                </div>
+
+            </div>
+            <div className="search-and-icons bg-[#1E1E1E] flex flex-row h-[120px] w-[100%] ">
+                <input type="text" placeholder='search by title or author ' className='search-author w-[80%] text-[40px] h-[100px]  mt-2 mb-2 ml-8 p-8' />
+                <div className="icons text-white w-[20%] h-[100px] flex flex-row  items-stretch gap-8 mt-14 ml-[100px]">
+                    <a href="#"><FaFacebookF size={40} color='#E54125' />
+                    </a>
+                    {/* <a href="#">insta</a> */}
+                    <a href="#"><FaInstagram size={40} color='#E54125' />
+                    </a>
+                    <a href="#"><FaTwitter size={40} color='#E54125' />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    )
+}
+
+export default Hero
