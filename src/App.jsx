@@ -1,18 +1,39 @@
  
 import './App.css'
-import Footer from './components/Footer'
-import Hero from './components/Hero'
-import Navbar from './components/Navbar'
+import { createBrowserRouter, Router, RouterProvider } from 'react-router-dom'
+import BookList from './pages/bookList'
+import AddBook from './pages/addBook'
+import BookDetails from './pages/bookDetails'
 
 function App() {
-  
+   
+  const router = createBrowserRouter([
+    {
+      path:"/",
+      element:<BookList/>
+    },
+    {
+      path:"/add-new",
+      element:<AddBook/>
+    },
+    // {
+    //   path:"/books/:id",
+    //   element:<BookDetails/>
+    //
+    // form title,author,genre,available:true/false radio button
+    //summary, image submit 
+    // },
+    {
+      path:"/books/details",
+      element:<BookDetails/>
+    }
+  ])
 
   return (
     <>
-     <Navbar/>
-    <Hero/>
-    <Footer/>
-    </>
+    <RouterProvider router={router}/>
+     </>
+      
   )
 }
 
