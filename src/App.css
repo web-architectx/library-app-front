@@ -22,3 +22,11 @@
     border-bottom: 2px solid white;
     background-color: #1E1E1E;
   }
+
+  .pages-hero{
+    background-image: url(../src/assets/images/svg_.svg);
+    height: 40vh;
+    width: 99vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
