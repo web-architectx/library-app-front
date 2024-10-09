@@ -6,12 +6,18 @@ import AddBook from './pages/addBook'
 import BookDetails from './pages/bookDetails'
 import ContactUs from './pages/contactUs'
 import AboutUs from './pages/aboutUs'
+import Categories from './pages/Categories'
+import HomePage from './pages/homePage'
 
 function App() {
    
   const router = createBrowserRouter([
     {
       path:"/",
+      element:<HomePage/>
+    },
+    {
+      path:"/home",
       element:<BookList/>
     },
     {
@@ -28,6 +34,10 @@ function App() {
     {
       path:"/books/details",
       element:<BookDetails/>
+    },
+    {
+      path:"/categories",
+      element:<Categories/>
     },
     {
       path:"/about",
