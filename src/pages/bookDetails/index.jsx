@@ -2,14 +2,17 @@ import React from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Aragon from '../../assets/images/books/aragon.jpg'
+import { FaRegEye } from "react-icons/fa";
+import { FaDownload } from "react-icons/fa";
+
 
 const BookDetails = () => {
   return (
     <div>
       <Navbar />
 
-      <div className='flex flex-row bg-[#626262] justify-center gap-6 '>
-      {/* <div className='flex flex-row  bg-red-400 justify-center'> */}
+      <div className='flex flex-row  bg-[#626262] justify-center gap-6 '>
+        {/* <div className='flex flex-row  bg-red-400 justify-center'> */}
         <div className='h-[75vh] w-[25%]  mt-32'>
           <img src={Aragon} alt="img" className='w-full h-full object-cover' />
         </div>
@@ -25,17 +28,27 @@ const BookDetails = () => {
             </button>
           </div>
           <div className='mt-6 flex flex-row gap-4'>
-          <button className=" w-[7vw] px-4 py-2 text-white bg-[#E54224] bg-opacity-70 hover:bg-opacity-90 rounded-md border border-[#E54224] transition-colors duration-300">
+            <button className=" w-[7vw] px-4 py-2 text-white bg-[#E54224] bg-opacity-70 hover:bg-opacity-90 rounded-md border border-[#E54224] transition-colors duration-300">
               <a href="#">Edit</a>
             </button>
             <button className=" w-[7vw] px-4 py-2 text-white bg-[#E54224] bg-opacity-70 hover:bg-opacity-90 rounded-md border border-[#E54224] transition-colors duration-300">
               <a href="#">Delete</a>
             </button>
           </div>
+          {/* <div className=''> */}
+          <div className='flex items-center space-x-6 text-white mt-2'>
+            <p className='flex items-center space-x-2'>
+              <FaRegEye />
+              <span >1.6k</span>
+            </p>
+            <p className='flex items-center space-x-2'>
+              <FaDownload />
+              <span>500K</span>
+            </p>
+          </div>
+
         </div>
-
       </div>
-
       <Footer />
     </div>
   )
