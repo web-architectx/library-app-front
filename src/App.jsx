@@ -17,7 +17,7 @@ function App() {
       element:<HomePage/>
     },
     {
-      path:"/home",
+      path:"/booklist",
       element:<BookList/>
     },
     {
