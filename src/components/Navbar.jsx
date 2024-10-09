@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/images/logo-light.png'
-
+import { FaSearch } from 'react-icons/fa';
 
 
 const Navbar = () => {
@@ -18,14 +18,27 @@ const Navbar = () => {
             <li><a href="#">Categories</a></li>
             <li><a href="#">Books</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="#">serach</a></li>
+            {/* <li><a href="#">search</a></li> */}
+            <li>
+              <a href="#">
+                <FaSearch className="text-[32px] text-[#E54125]" />
+              </a>
+            </li>
             <li><a href="#">Login</a></li>
-            <li><a href="#" className='bg-[#E54125] h-[100px] w-[120px]  rounded-[12px]'>Register</a></li>
+            <li>
+              <a
+                href="#"
+                className='bg-[#E54125] h-[40px] w-[120px] text-white text-center flex items-center justify-center rounded-[12px] hover:bg-[#FF6F61] transition-all duration-300 ease-in-out shadow-lg'
+              >
+                Register
+              </a>
+            </li>
+
           </ul>
         </div>
       </nav>
 
-      </div>
+    </div>
   )
 }
 
