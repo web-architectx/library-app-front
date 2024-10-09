@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../assets/images/logo-light.png'
 import { FaSearch } from 'react-icons/fa';
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -14,9 +14,11 @@ const Navbar = () => {
         <div className="nav-list w-[70%] h-full bg-[#1E1E1E] text-white ">
           <ul className='flex flex-row  justify-stretch gap-12 ml-[25%]  mr-[10%] mt-10 text-[20px]'>
             {/* <ul className='flex flex-row  justify-stretch gap-12 text-[30px]'> */}
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Books</a></li>
+            {/* <li><a href="#">Home</a></li> */}
+            <li><Link to="/">Home</Link></li>
+            
+            <li><Link to="/categories">Categories</Link></li>
+            <li><Link to="/books/details"> Books</Link></li>
             <li><a href="#">Contact</a></li>
             {/* <li><a href="#">search</a></li> */}
             <li>
