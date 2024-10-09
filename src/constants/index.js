@@ -72,3 +72,5 @@ const K = {
     ]
 }
 export default K
+
+export const BASE_URL = 'https://library-app-mk1q.onrender.com/';
