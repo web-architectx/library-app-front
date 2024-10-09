@@ -8,10 +8,10 @@ import { FaDownload } from "react-icons/fa";
 
 const BookDetails = () => {
   return (
-    <div>
+    <div className='bg-[#626262]'>
       <Navbar />
 
-      <div className='flex flex-row  bg-[#626262] justify-center gap-6 '>
+      <div className='flex flex-row   justify-center gap-6 '>
         {/* <div className='flex flex-row  bg-red-400 justify-center'> */}
         <div className='h-[75vh] w-[25%]  mt-32'>
           <img src={Aragon} alt="img" className='w-full h-full object-cover' />

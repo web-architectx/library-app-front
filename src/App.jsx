@@ -4,6 +4,7 @@ import { createBrowserRouter, Router, RouterProvider } from 'react-router-dom'
 import BookList from './pages/bookList'
 import AddBook from './pages/addBook'
 import BookDetails from './pages/bookDetails'
+import ContactUs from './pages/contactUs'
 
 function App() {
    
@@ -26,6 +27,10 @@ function App() {
     {
       path:"/books/details",
       element:<BookDetails/>
+    },
+    {
+      path:"/contact-us",
+      element:<ContactUs/>
     }
   ])
 

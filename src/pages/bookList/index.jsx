@@ -11,7 +11,7 @@ const BookList = () => {
     return (
         <>
         <Navbar/>
-        <Hero/>
+        <Hero page="Books"/>
         <div className="grid grid-cols-4 w-4/5 mx-auto my-auto my-20 gap-12 mt-8">
             {
                 K.OFFERS.map((offer, index) => {

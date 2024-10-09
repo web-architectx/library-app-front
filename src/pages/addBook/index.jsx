@@ -4,9 +4,9 @@ import Footer from '../../components/Footer'
 
 const AddBook = () => {
   return (
-    <div>
+    <div className='bg-slate-900'>
       <Navbar />
-      <div className='flex flex-row bg-slate-900 justify-center '>
+      <div className='flex flex-row  justify-center '>
       
 
         {/* <div className="w-full max-w-xs"> */}
