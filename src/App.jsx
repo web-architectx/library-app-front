@@ -5,6 +5,7 @@ import BookList from './pages/bookList'
 import AddBook from './pages/addBook'
 import BookDetails from './pages/bookDetails'
 import ContactUs from './pages/contactUs'
+import AboutUs from './pages/aboutUs'
 
 function App() {
    
@@ -27,6 +28,10 @@ function App() {
     {
       path:"/books/details",
       element:<BookDetails/>
+    },
+    {
+      path:"/about",
+      element:<AboutUs/>
     },
     {
       path:"/contact-us",
