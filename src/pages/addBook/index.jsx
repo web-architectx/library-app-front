@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import axios from 'axios'
 import { BASE_URL } from '../../constants'
 
+
 const AddBook = () => {
+ 
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
@@ -23,7 +25,8 @@ const AddBook = () => {
     }
 
     }
-  // }
+  
+ 
   return (
     <div className='bg-slate-900'>
       <Navbar />
