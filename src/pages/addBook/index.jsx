@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 
+
 const AddBook = () => {
+
+
+const [formData, setFormData] = useState({
+  title : "",
+  completed : "",
+});
+const [message,setMessage]=useState("");
+const [errore,setError] = useState("");
+
+const handleSubmit = async(e)=>{
+  e.preventDefault();
+  setMessage("");
+  setError("");
+
+  const formDataToSubmit = new FormData();
+  formDataToSubmit.append("title",formDataToSubmit.title),
+  formDataToSubmit.append("completed",formDataToSubmit.completed)
+}
+
+
   return (
     <div className='bg-slate-900'>
       <Navbar />

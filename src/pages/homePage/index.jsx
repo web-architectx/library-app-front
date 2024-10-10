@@ -2,9 +2,30 @@ import React from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Hero from '../../components/Hero'
-import K from "../../constants";
+import { BASE_URL } from '../../constants'
+import axios from 'axios'
+
+// import K from "../../constants";
+import { useState,useEffect } from 'react'
 
 const HomePage = () => {
+    //  const response = await axios.post(`${BASE_URL}/books`,{
+const [books , setBooks] = useState([]);
+
+const getBooks = async ()=>{
+    try {
+        const response = await axios.get(`${BASE_URL}/todos`);
+    // const response = await axios.get(`${BASE_URL}/library`);
+    console.table(response.data)
+    setBooks(response.data)
+        
+    } catch (error) {
+        console.log("Error fetching books",error)
+    }
+}
+useEffect(()=>{
+    getBooks(),[];
+})
     return (
         <div>
             <Navbar />
@@ -22,7 +43,7 @@ const HomePage = () => {
                         </div>
                         <div className="main-bar  w-[80vw]   grid grid-cols-6 w-5/5 mx-auto my-auto my-20 gap-4 mt-2 mb-2">
                         {/* <div className="main-bar  w-[80vw] bg-yellow-200 grid grid-cols-6 w-4/5 mx-auto my-auto my-20 gap-4 mt-8 mb-2"> */}
-                            {
+                            {/* {
                                 K.OFFERS.slice(0, 6).map((offer, index) => {
                                     console.log(`${index}: ${offer.author}`);
                                     return (
@@ -35,7 +56,14 @@ const HomePage = () => {
                                         </div>
                                     );
                                 })
-                            }
+                            } */}
+                            {
+                   
+                   books.slice(0,6).map((book)=>{
+                       return <div key={book.key} className="flex flex-col items-center gap-y-4 p-4  rounded-lg shadow-lg">{book.title}</div>
+                      
+                   })
+               }
                         </div>
                     </div>
                 </div>
