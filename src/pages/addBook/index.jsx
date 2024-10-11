@@ -3,9 +3,12 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import axios from 'axios';
 import { BASE_URL } from '../../constants';
+import Swal from 'sweetalert2'; // Import SweetAlert
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const AddBook = () => {
   const [authors, setAuthors] = useState([]);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const getAuthors = async () => {
     try {
@@ -34,11 +37,21 @@ const AddBook = () => {
         img_url: formData.get('img_url'),
       });
       console.log("Book added:", response.data);
+
+      // Show success message with SweetAlert
+      Swal.fire('Success!', 'The book has been added.', 'success').then(() => {
+        navigate('/booklist'); // Redirect to /booklist after alert is confirmed
+      });
+
+      // Optionally reset the form or redirect
+      event.target.reset(); // Reset the form
     } catch (error) {
       if (error.response) {
         console.error("Error response:", error.response.data); // Log actual error message
+        Swal.fire('Failed', 'Error adding book: ' + error.response.data.message, 'error'); // Show error alert
       } else {
         console.error("Error adding book:", error.message);
+        Swal.fire('Failed', 'Error adding book: ' + error.message, 'error'); // Show error alert
       }
     }
   };

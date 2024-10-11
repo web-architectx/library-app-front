@@ -64,23 +64,28 @@ const BookDetails = () => {
 
     console.log("Form data being submitted:", formData); // Debugging output
     try {
-      // PUT request to update the book
+      // PATCH request to update the book
       const response = await axios.patch(`${BASE_URL}/library/${bookId}`, formData);
       
       console.log("Response from update API:", response); // Debugging output
-      
-      // Show success message
-      Swal.fire('Updated!', 'The book has been updated.', 'success');
-      
-      // Close the modal after successful update
-      setModalOpen(false);
-      
-      // Refresh book details to show updated data
-      getBookDetails();
+
+      if (response.status === 200) { // Ensure the response is successful
+        // Show success message
+        Swal.fire('Updated!', 'The book has been updated.', 'success');
+
+        // Close the modal after successful update
+        setModalOpen(false);
+
+        // Refresh book details to show updated data
+        getBookDetails();
+      } else {
+        // Handle non-successful responses
+        Swal.fire('Failed', 'Failed to update the book.', 'error');
+      }
     } catch (error) {
       console.error("Error updating book:", error);
       // Show error message
-      Swal.fire('Failed', 'Failed to update the book.', 'error');
+      Swal.fire('Failed', 'Failed to update the book. Please try again.', 'error');
     }
   };
 
@@ -204,19 +209,17 @@ const BookDetails = () => {
                   className="border border-gray-300 p-2 w-full"
                 />
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-between">
                 <button
                   type="button"
-                  onClick={() => setModalOpen(false)}  // Close modal
-                  className="bg-gray-500 text-white px-4 py-2 mr-2 rounded-md"
-                >
+                  onClick={() => setModalOpen(false)} // Close modal
+                  className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md">
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="bg-green-500 text-white px-4 py-2 rounded-md"
-                >
-                  Save
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md">
+                  Save Changes
                 </button>
               </div>
             </form>

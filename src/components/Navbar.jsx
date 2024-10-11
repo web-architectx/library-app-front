@@ -2,6 +2,10 @@ import React from 'react'
 import logo from '../assets/images/logo-light.png'
 import { FaSearch } from 'react-icons/fa';
 import { Link } from "react-router-dom";
+import { HiBookOpen } from "react-icons/hi2";
+import { HiPlusSmall } from "react-icons/hi2";
+
+
 
 const Navbar = () => {
   return (
@@ -18,9 +22,12 @@ const Navbar = () => {
             {/* <li><a href="#">Home</a></li> */}
             <li><Link to="/">Home</Link></li>
             
-            <li><Link to="/categories">Categories</Link></li>
+            {/* <li><Link to="/categories">Categories</Link></li> */}
+            <li><Link to="/booklist">Library
+</Link></li>
  
-            <li><Link to="/books/details"> Books</Link></li>
+            <li className=''><Link to="/add-new" className='flex flex-row'><HiPlusSmall size={30} />
+            <HiBookOpen size={40}/></Link></li>
             <li><Link to="/contact-us">Contact</Link></li>
 
             {/* <li><a href="#">search</a></li> */}
