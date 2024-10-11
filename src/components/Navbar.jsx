@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
+      {/* <nav className="flex flex-col sm:flex-row justify-around h-auto sm: sm:h-[24px] sm:w-full   bg-slate-600"> */}
       <nav className='flex  flex-row justify-around h-[120px]  bg-slate-600'>
         <div className="library-logo  flex flex-row gap-2 bg-[#E54125] w-[30%] ">
           <img src={logo} className='ml-[20%] ' alt="img" />
