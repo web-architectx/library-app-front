@@ -21,21 +21,26 @@ const Navbar = () => {
             {/* <ul className='flex flex-row  justify-stretch gap-12 text-[30px]'> */}
             {/* <li><a href="#">Home</a></li> */}
             <li><Link to="/">Home</Link></li>
-            
+
             {/* <li><Link to="/categories">Categories</Link></li> */}
             <li><Link to="/booklist">Library
-</Link></li>
- 
-            <li className=''><Link to="/add-new" className='flex flex-row'><HiPlusSmall size={30} />
-            <HiBookOpen size={40}/></Link></li>
+            </Link></li>
+
+            <li className=''><Link to="/add-new" className='flex flex-row'>
+            {/* <HiPlusSmall size={30} /> */}
+              <HiBookOpen size={40} /></Link></li>
+            {/* <li className=''><Link to="/add-new" className='flex flex-row'><HiPlusSmall size={30} />
+              <HiBookOpen size={40} /></Link></li> */}
             <li><Link to="/contact-us">Contact</Link></li>
+            <li><Link to="/about">About</Link></li>
 
             {/* <li><a href="#">search</a></li> */}
-            <li>
+            {/* <li>
               <a href="#">
-                <FaSearch className="text-[32px] text-[#E54125]" />
-              </a>
-            </li>
+                {/* <FaSearch className="text-[32px] text-[#E54125]" /> */}
+
+            {/* </a>
+            </li>  */}
             {/* <li><a href="#">Login</a></li> */}
             <li>
               <a
