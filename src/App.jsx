@@ -24,17 +24,15 @@ function App() {
       path:"/add-new",
       element:<AddBook/>
     },
-    // {
-    //   path:"/books/:id",
-    //   element:<BookDetails/>
-    //
-    // form title,author,genre,available:true/false radio button
-    //summary, image submit 
-    // },
-    {
-      path:"/books/details",
-      element:<BookDetails/>
+{
+    path:"/book/:bookId",
+     element:<BookDetails/>
+     
     },
+    // {
+    //   path:"/books/details",
+    //   element:<BookDetails/>
+    // },
     {
       path:"/categories",
       element:<Categories/>
