@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="logo-div h-auto w-[40%]   flex flex-col">
         <div className='flex flex-row'>
           <img src={OrangeFooterLogo} className='w-[140px] gap-4 text-[#E64524] ' alt="logo" />
-          <h1 className='text-[70px] font-bold mt-4 text-[#E64524]'>E-Library</h1>
+          <h1 className='text-[60px] font-bold mt-4 text-[#E64524]'>E-Library</h1>
         </div>
        <div className='flex flex-col gap-1 text-[20px] font-semibold ml-4'>
        <p>123 Buro</p>
