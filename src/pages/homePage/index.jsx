@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { createBrowserRouter, Router, RouterProvider } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Hero from '../../components/Hero';
 import { BASE_URL } from '../../constants';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     const [books, setBooks] = useState([]);
+    const [downloadedBooks, setDownloadedBooks] = useState([]);
 
+    // Fisher-Yates Shuffle to randomize the array
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    };
+
+    // Fetch library books
     const getBooks = async () => {
         try {
             const response = await axios.get(`${BASE_URL}/library`);
@@ -20,9 +30,34 @@ const HomePage = () => {
         }
     };
 
+    // Fetch library books and reviews for "Most Downloaded Books" logic
+    const getDownloadedBooks = async () => {
+        try {
+            const libraryResponse = await axios.get(`${BASE_URL}/library`);
+            const reviewResponse = await axios.get(`${BASE_URL}/review`);
+            const booksWithRating = [];
+
+            // Match reviews with books and filter by rating > 5
+            reviewResponse.data.forEach((review) => {
+                const matchingBook = libraryResponse.data.find(book => book.title === review.book);
+                if (matchingBook && review.rating > 5) {
+                    booksWithRating.push(matchingBook);
+                }
+            });
+
+            setDownloadedBooks(booksWithRating);
+        } catch (error) {
+            console.log("Error fetching downloaded books", error);
+        }
+    };
+
     useEffect(() => {
         getBooks();
-    }, []); // Correct usage of useEffect
+        getDownloadedBooks();
+    }, []);
+
+    // Randomize books for the Fisher-Yates shuffle section
+    const randomizedBooks = shuffleArray([...books]);
 
     return (
         <div>
@@ -30,38 +65,65 @@ const HomePage = () => {
             <Hero />
             <div className='flex flex-col justify-center items-center'>
                 <div className='flex flex-col justify-center items-center'>
+                    {/* New Arrivals Section */}
                     <div className="read-book overflow-hidden mt-16">
                         <div className="top-bar h-[7vh] w-[80vw] flex flex-row justify-between items-center">
-                            <h1 className='text-[40px] font-semibold'>Most Read Books</h1>
-                            <p>
-                                <Link to="/booklist" className='text-[24px] underline'>See all</Link> <span>&gt;</span>
-                            </p>
+                            <h1 className='text-[40px] font-semibold ml-4'>New Arrivals</h1>
+                            <p><a href="#" className='text-[24px] underline'><Link to="/booklist">See all</Link></a> <span>&gt;</span></p>
                         </div>
-                        <div className="main-bar w-[80vw] grid grid-cols-6 gap-4 mx-auto my-20">
-                            { 
-                                books.slice(0, 6).map((book) => {
-                                    console.log('Image URL:', book.img_url); // Log the image URL
-                                    return (
-                                        <div key={book._id} className="flex flex-col items-center gap-y-2 p-4 rounded shadow-lg">
-                                            <span className="block rounded-lg overflow-hidden">
-                                                <img 
-                                                    src={book.img_url} 
-                                                    alt={book.title} 
-                                                    className="w-[200px] h-[300px] object-cover"
-                                                     
-                                                />
-                                            </span>
-                                            <p className="text-lg font-semibold text-[#E54224]">{book.title}</p>
-                                            <h3 className="text-base text-white font-medium">{book.author}</h3>
-                                        </div>
-                                    );
-                                })
-                            } 
+                        <div className="main-bar w-[80vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mt-2 mb-2">
+                            {books.slice(Math.max(books.length - 6, 0)).map((book) => (
+                                <div key={book._id} className="flex flex-col items-center gap-y-2 p-4 rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
+                                    <span className="block rounded-lg overflow-hidden">
+                                        <img src={book.img_url} alt={book.title} className="w-full h-[300px] object-cover" />
+                                    </span>
+                                    <p className="text-lg font-semibold text-[#E54224] text-center">{book.title}</p>
+                                    <h3 className="text-base text-black font-semibold font-medium text-center">{book.author}</h3>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Most Downloaded Books Section */}
+                    <div className="downloaded-books overflow-hidden mt-16">
+                        <div className="top-bar h-[7vh] w-[80vw] flex flex-row justify-between items-center">
+                            <h1 className='text-[40px] font-semibold ml-4'>Most Downloaded</h1>
+                            <p><a href="#" className='text-[24px] underline'><Link to="/booklist">See all</Link></a> <span>&gt;</span></p>
+                        </div>
+                        <div className="main-bar w-[80vw] grid grid-cols-6 gap-4 mt-2 mb-2">
+                            {downloadedBooks.slice(0, 6).map((book) => (
+                                <div key={book._id} className="flex flex-col items-center gap-y-2 p-4 rounded shadow-lg">
+                                    <span className="block rounded-lg overflow-hidden">
+                                        <img src={book.img_url} alt="img" className="w-[200px] h-[300px] object-cover" />
+                                    </span>
+                                    <p className="text-lg font-semibold text-[#E54224]">{book.title}</p>
+                                    <h3 className="text-base text-black font-medium">{book.author}</h3>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Randomized Books Section */}
+                    <div className="randomized-books overflow-hidden mt-16">
+                        <div className="top-bar h-[7vh] w-[80vw] flex flex-row justify-between items-center">
+                            <h1 className='text-[40px] font-semibold ml-4'>Curated Surprises</h1>
+                            <p><a href="#" className='text-[24px] underline'><Link to="/booklist">See all</Link></a> <span>&gt;</span></p>
+                        </div>
+                        <div className="main-bar w-[80vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mt-2 mb-2">
+                            {randomizedBooks.slice(0, 6).map((book) => (
+                                <div key={book._id} className="flex flex-col items-center gap-y-2 p-4 rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
+                                    <span className="block rounded-lg overflow-hidden">
+                                        <img src={book.img_url} alt={book.title} className="w-full h-[300px] object-cover" />
+                                    </span>
+                                    <p className="text-lg font-semibold text-[#E54224] text-center">{book.title}</p>
+                                    <h3 className="text-base text-black font-semibold ext-center">{book.author}</h3>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
-                <Footer />
             </div>
+            <Footer />
         </div>
     );
 };
