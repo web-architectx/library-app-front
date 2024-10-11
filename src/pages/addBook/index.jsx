@@ -5,6 +5,9 @@ import axios from 'axios';
 import { BASE_URL } from '../../constants';
 import Swal from 'sweetalert2'; // Import SweetAlert
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+// import Hero from '../../components/Hero';
+import Hero from "../../pages/bookList/components/Hero";
+// import Hero from "./components/Hero";
 
 const AddBook = () => {
   const [authors, setAuthors] = useState([]);
@@ -57,8 +60,10 @@ const AddBook = () => {
   };
 
   return (
+    // <div className='bg-slate-900'>
     <div className='bg-slate-900'>
       <Navbar />
+      <Hero page="Add New Book" />
       <div className='flex flex-row justify-center'>
         <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg px-12 pt-8 pb-10 mb-24 mt-20 w-2/5 mx-auto">
           <h1 className='text-black text-[34px] font-semibold mb-4 flex flex-row justify-center'>Add Book</h1>

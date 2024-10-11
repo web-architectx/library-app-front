@@ -73,13 +73,33 @@ const HomePage = () => {
                         </div>
                         <div className="main-bar w-[80vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mt-2 mb-2">
                             {books.slice(Math.max(books.length - 6, 0)).map((book) => (
-                                <div key={book._id} className="flex flex-col items-center gap-y-2 p-4 rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
-                                    <span className="block rounded-lg overflow-hidden">
-                                        <img src={book.img_url} alt={book.title} className="w-full h-[300px] object-cover" />
-                                    </span>
-                                    <p className="text-lg font-semibold text-[#E54224] text-center">{book.title}</p>
-                                    <h3 className="text-base text-black font-semibold font-medium text-center">{book.author}</h3>
-                                </div>
+
+                                // <div key={book._id} className="flex flex-col items-center gap-y-2 p-4 rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
+                                //     <span className="block rounded-lg overflow-hidden">
+                                //         <img src={book.img_url} alt={book.title} className="w-full h-[300px] object-cover" />
+                                //     </span>
+
+
+                                    
+                                //     <p className="text-lg font-semibold text-[#E54224] text-center">{book.title}</p>
+                                //     <h3 className="text-base text-black font-semibold font-medium text-center">{book.author}</h3>
+                                // </div>
+                                <Link 
+                            key={book._id} 
+                            to={`/book/${book._id}`} // Navigate to the single book page with the book ID
+                            className="flex flex-col items-center gap-y-4 p-4 rounded-lg shadow-lg cursor-pointer"
+                        >
+                            <span className="block rounded-lg overflow-hidden">
+                                <img 
+                                    src={book.img_url} 
+                                    alt="img" 
+                                    className="w-[250px] h-[350px] object-cover transition-transform duration-300 hover:scale-105" 
+                                />
+                            </span>
+                            <p className="text-lg font-semibold text-[#E54224]">{book.title}</p>
+                            <h3 className="text-base text-black font-medium">{book.author}</h3>
+                        </Link>
+
                             ))}
                         </div>
                     </div>
@@ -92,13 +112,32 @@ const HomePage = () => {
                         </div>
                         <div className="main-bar w-[80vw] grid grid-cols-6 gap-4 mt-2 mb-2">
                             {downloadedBooks.slice(0, 6).map((book) => (
-                                <div key={book._id} className="flex flex-col items-center gap-y-2 p-4 rounded shadow-lg">
-                                    <span className="block rounded-lg overflow-hidden">
-                                        <img src={book.img_url} alt="img" className="w-[200px] h-[300px] object-cover" />
-                                    </span>
-                                    <p className="text-lg font-semibold text-[#E54224]">{book.title}</p>
-                                    <h3 className="text-base text-black font-medium">{book.author}</h3>
-                                </div>
+                                // <div key={book._id} 
+                                // // <div key={book._id} 
+                                // to={`/book/${book._id}`} // Navigate to the single book page with the book ID 
+                                // className="flex flex-col items-center gap-y-2 p-4 rounded shadow-lg">
+                                //     <span className="block rounded-lg overflow-hidden">
+                                //         <img src={book.img_url} alt="img" className="w-[200px] h-[300px] object-cover" />
+                                //     </span>
+                                //     <p className="text-lg font-semibold text-[#E54224]">{book.title}</p>
+                                //     <h3 className="text-base text-black font-medium">{book.author}</h3>
+                                // </div>
+                                <Link 
+                            key={book._id} 
+                            to={`/book/${book._id}`} // Navigate to the single book page with the book ID
+                            className="flex flex-col items-center gap-y-4 p-4 rounded-lg shadow-lg cursor-pointer"
+                        >
+                            <span className="block rounded-lg overflow-hidden">
+                                <img 
+                                    src={book.img_url} 
+                                    alt="img" 
+                                    className="w-[250px] h-[350px] object-cover transition-transform duration-300 hover:scale-105" 
+                                />
+                            </span>
+                            <p className="text-lg font-semibold text-[#E54224]">{book.title}</p>
+                            <h3 className="text-base text-black font-medium">{book.author}</h3>
+                        </Link>
+
                             ))}
                         </div>
                     </div>
@@ -111,13 +150,30 @@ const HomePage = () => {
                         </div>
                         <div className="main-bar w-[80vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mt-2 mb-2">
                             {randomizedBooks.slice(0, 6).map((book) => (
-                                <div key={book._id} className="flex flex-col items-center gap-y-2 p-4 rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
-                                    <span className="block rounded-lg overflow-hidden">
-                                        <img src={book.img_url} alt={book.title} className="w-full h-[300px] object-cover" />
-                                    </span>
-                                    <p className="text-lg font-semibold text-[#E54224] text-center">{book.title}</p>
-                                    <h3 className="text-base text-black font-semibold ext-center">{book.author}</h3>
-                                </div>
+
+                                // <div key={book._id} className="flex flex-col items-center gap-y-2 p-4 rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
+                                //     <span className="block rounded-lg overflow-hidden">
+                                //         <img src={book.img_url} alt={book.title} className="w-full h-[300px] object-cover" />
+                                //     </span>
+                                //     <p className="text-lg font-semibold text-[#E54224] text-center">{book.title}</p>
+                                //     <h3 className="text-base text-black font-semibold ext-center">{book.author}</h3>
+                                // </div>
+                                <Link 
+                            key={book._id} 
+                            to={`/book/${book._id}`} // Navigate to the single book page with the book ID
+                            className="flex flex-col items-center gap-y-4 p-4 rounded-lg shadow-lg cursor-pointer"
+                        >
+                            <span className="block rounded-lg overflow-hidden">
+                                <img 
+                                    src={book.img_url} 
+                                    alt="img" 
+                                    className="w-[400px] h-[350px] object-cover transition-transform duration-300 hover:scale-105" 
+                                />
+                            </span>
+                            <p className="text-lg font-semibold text-[#E54224]">{book.title}</p>
+                            <h3 className="text-base text-black font-medium">{book.author}</h3>
+                        </Link>
+
                             ))}
                         </div>
                     </div>
