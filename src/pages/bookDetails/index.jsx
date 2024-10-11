@@ -118,7 +118,7 @@ const BookDetails = () => {
           <h4 className='text-[20px] text-white mt-6'>Publisher: <span>RoBlack Digital</span></h4>
           <h4 className='text-[20px] text-white mt-6'>Summary: {book.summary}</h4>
           <div className='flex flex-row gap-6 mt-8'>
-            <h4 className='text-white text-[20px]'>Categories</h4>
+            <h4 className='text-white text-[25px] mt-3'>Genre</h4>
             <button className="w-[10vw] h-14 px-4 py-2 text-[#E54224] bg-white bg-opacity-80 hover:bg-opacity-100 rounded-lg 
                 border border-[#E54224] transition-all duration-300 transform hover:scale-105 shadow-lg 
                 focus:outline-none focus:ring-2 focus:ring-[#E54224] focus:ring-opacity-50 border-none">
