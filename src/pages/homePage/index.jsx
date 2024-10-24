@@ -167,7 +167,8 @@ const HomePage = () => {
                                 <img 
                                     src={book.img_url} 
                                     alt="img" 
-                                    className="w-[400px] h-[350px] object-cover transition-transform duration-300 hover:scale-105" 
+                                    className="w-[400px] h-[350px] object-cover transition-transform 
+                                    duration-300 hover:scale-105" 
                                 />
                             </span>
                             <p className="text-lg font-semibold text-[#E54224]">{book.title}</p>
