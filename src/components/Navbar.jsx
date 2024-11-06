@@ -4,6 +4,8 @@ import { FaSearch } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { HiBookOpen } from "react-icons/hi2";
 import { HiPlusSmall } from "react-icons/hi2";
+import { IoMdAddCircle } from 'react-icons/io';
+import { MdLibraryAdd } from 'react-icons/md';
 
 
 
@@ -28,7 +30,7 @@ const Navbar = () => {
 
             <li className=''><Link to="/add-new" className='flex flex-row'>
             {/* <HiPlusSmall size={30} /> */}
-              <HiBookOpen size={40} /></Link></li>
+              <MdLibraryAdd size={40} title="Add New Book" /></Link></li>
             {/* <li className=''><Link to="/add-new" className='flex flex-row'><HiPlusSmall size={30} />
               <HiBookOpen size={40} /></Link></li> */}
             <li><Link to="/contact-us">Contact</Link></li>
