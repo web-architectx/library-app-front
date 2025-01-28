@@ -35,8 +35,8 @@ const HomePage = () => {
     // Fetch library books and reviews for "Most Downloaded Books" logic
     const getDownloadedBooks = async () => {
         try {
-            const libraryResponse = await axios.get(`${BASE_URL}/library`);
-            const reviewResponse = await axios.get(`${BASE_URL}/review`);
+            const libraryResponse = await axios.get(`${VITE_BASE_URL}/library`);
+            const reviewResponse = await axios.get(`${VITE_BASE_URL}/review`);
             const booksWithRating = [];
 
             // Match reviews with books and filter by rating > 5
