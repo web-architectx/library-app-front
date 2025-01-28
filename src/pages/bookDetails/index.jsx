@@ -8,7 +8,8 @@ const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 import { FaRegEye, FaDownload } from "react-icons/fa";
 import axios from 'axios';
-import Swal from 'sweetalert2'; // Import SweetAlert
+import Swal from 'sweetalert2';  
+
 
 const BookDetails = () => {
   const { bookId } = useParams(); // Get bookId from the URL
@@ -21,13 +22,25 @@ const BookDetails = () => {
   // Fetch book details based on bookId
   const getBookDetails = async () => {
     try {
+ 
       const response = await axios.get(`${VITE_BASE_URL}/library/${bookId}`);
       console.log("Fetched book data:", response.data); // Debugging output
+ 
+      // Debugging output
+      // console.log("Fetched book data:", response.data); 
+ 
       setBook(response.data); // Set the book data
-      setFormData(response.data); // Initialize form data with book data
+      setFormData({
+        title: response.data.title,
+        author: response.data.author,
+        genre: response.data.genre,
+        summary: response.data.summary,
+        img_url: response.data.img_url,
+      }); // Initialize form data with book data
     } catch (error) {
       console.error("Error fetching book details", error);
-      setError(true); // Set error if fetching fails
+// Set error if fetching fails
+      setError(true); 
     }
   };
 
@@ -45,10 +58,10 @@ const BookDetails = () => {
       if (result.isConfirmed) {
         try {
           await axios.delete(`${BASE_URL}/library/${bookId}`); // DELETE request
-          Swal.fire('Deleted!', 'The book has been deleted.', 'success'); // Show success alert
+          Swal.fire('Deleted!', 'This book has been deleted.', 'success'); // Show success alert
           navigate('/booklist'); // Redirect to the book list page after deletion
         } catch (error) {
-          console.error("Error deleting book:", error);
+          // console.error("Error deleting book:", error);
           Swal.fire('Failed', 'Failed to delete the book.', 'error'); // Show error alert
         }
       }
@@ -64,13 +77,13 @@ const BookDetails = () => {
   // Function to handle the edit form submission
   const handleEditSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-
-    console.log("Form data being submitted:", formData); // Debugging output
+// Debugging output
+    // console.log("Form data being submitted:", formData); 
     try {
       // PATCH request to update the book
       const response = await axios.patch(`${BASE_URL}/library/${bookId}`, formData);
-      
-      console.log("Response from update API:", response); // Debugging output
+      // Debugging output
+      // console.log("Response from update API:", response); 
 
       if (response.status === 200) { // Ensure the response is successful
         // Show success message
@@ -121,7 +134,7 @@ const BookDetails = () => {
           <h4 className='text-[20px] text-white mt-6'>Publisher: <span>RoBlack Digital</span></h4>
           <h4 className='text-[20px] text-white mt-6'>Summary: {book.summary}</h4>
           <div className='flex flex-row gap-6 mt-8'>
-            <h4 className='text-white text-[20px]'>Categories</h4>
+            <h4 className='text-white text-[25px] mt-3'>Genre</h4>
             <button className="w-[10vw] h-14 px-4 py-2 text-[#E54224] bg-white bg-opacity-80 hover:bg-opacity-100 rounded-lg 
                 border border-[#E54224] transition-all duration-300 transform hover:scale-105 shadow-lg 
                 focus:outline-none focus:ring-2 focus:ring-[#E54224] focus:ring-opacity-50 border-none">
@@ -164,7 +177,7 @@ const BookDetails = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
             <h2 className="text-xl font-bold mb-4">Edit Book</h2>
-            <form onSubmit={handleEditSubmit}>
+            <form onSubmit={handleEditSubmit} key={formData._id}>
               <div className="mb-4">
                 <label className="block mb-2" htmlFor="title">Title</label>
                 <input
@@ -236,3 +249,18 @@ const BookDetails = () => {
 };
 
 export default BookDetails;
+
+
+/** Love Triangle
+ * Romeo Asante
+ * Love
+ * Upgrade to paperback for just $100 extra. Get matching spine and back cover for your book. Contact me for upgrading or drop in a line when you place the order.
+
+Purchase will include hi resolution eBook cover design ready to upload to Amazon kindle, B&N Nook books and Smashwords.
+
+Implementation of Title, Subtitle and Author name as well as any other text you like to the book cover design.
+
+Exclusive premade book covers, designed using only Standard license royalty-free stock photos. Copyrights to the design transferred to client for all purchases.
+
+ * https://www.creativeparamita.com/wp-content/uploads/2021/01/love-triangle.jpg
+ */
