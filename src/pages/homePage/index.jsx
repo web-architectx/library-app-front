@@ -4,7 +4,9 @@ import axios from 'axios';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Hero from '../../components/Hero';
-import { BASE_URL } from '../../constants';
+// import { BASE_URL } from '../../constants';
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
+
 
 const HomePage = () => {
     const [books, setBooks] = useState([]);
@@ -22,7 +24,7 @@ const HomePage = () => {
     // Fetch library books
     const getBooks = async () => {
         try {
-            const response = await axios.get(`${BASE_URL}/library`);
+            const response = await axios.get(`${VITE_BASE_URL}/library`);
             console.table(response.data);
             setBooks(response.data);
         } catch (error) {

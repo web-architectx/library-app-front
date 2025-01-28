@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { BASE_URL } from '../../constants';
+// import { BASE_URL } from '../../constants';
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
+
+
 import { FaRegEye, FaDownload } from "react-icons/fa";
 import axios from 'axios';
 import Swal from 'sweetalert2'; // Import SweetAlert
@@ -18,7 +21,7 @@ const BookDetails = () => {
   // Fetch book details based on bookId
   const getBookDetails = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/library/${bookId}`);
+      const response = await axios.get(`${VITE_BASE_URL}/library/${bookId}`);
       console.log("Fetched book data:", response.data); // Debugging output
       setBook(response.data); // Set the book data
       setFormData(response.data); // Initialize form data with book data

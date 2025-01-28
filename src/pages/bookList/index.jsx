@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'; // Import Link
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
-import { BASE_URL } from '../../constants';
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
+// import { BASE_URL } from '../../constants';
 import Hero from "./components/Hero";
 import axios from 'axios';
 
@@ -11,7 +12,7 @@ const BookList = () => {
 
     const getBooks = async () => {
         try {
-            const response = await axios.get(`${BASE_URL}/library`);
+            const response = await axios.get(`${VITE_BASE_URL}/library`);
             console.table(response.data);
             setBooks(response.data);
         } catch (error) {

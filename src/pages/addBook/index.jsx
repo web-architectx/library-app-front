@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import axios from 'axios';
-import { BASE_URL } from '../../constants';
+// import { BASE_URL } from '../../constants';
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 import Swal from 'sweetalert2'; // Import SweetAlert
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
@@ -12,7 +13,8 @@ const AddBook = () => {
 
   const getAuthors = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/author`);
+      const response = await axios.get(`${VITE_BASE_URL}/author`);
+      // const response = await axios.get(`${BASE_URL}/author`);
       setAuthors(response.data);
     } catch (error) {
       console.error("Error fetching authors:", error);
