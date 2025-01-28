@@ -33,10 +33,10 @@ function App() {
     //   path:"/books/details",
     //   element:<BookDetails/>
     // },
-    {
-      path:"/categories",
-      element:<Categories/>
-    },
+    // {
+    //   path:"/categories",
+    //   element:<Categories/>
+    // },
     {
       path:"/about",
       element:<AboutUs/>
