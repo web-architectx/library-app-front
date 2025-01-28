@@ -1,5 +1,5 @@
 import aragon from '../assets/images/books/aragon.jpg'
-import billionaire from '../assets/images/books/Billionaire-Boss-Protector.JPG'
+import billionaire from '../assets/images/books/Billionaire-Boss-Protector.jpg'
 // import dirt from '../assets/images/books/dirt-dealer.jpg'
 
 
