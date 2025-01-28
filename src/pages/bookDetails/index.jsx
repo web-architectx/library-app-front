@@ -138,7 +138,7 @@ const BookDetails = () => {
             <button className="w-[10vw] h-14 px-4 py-2 text-[#E54224] bg-white bg-opacity-80 hover:bg-opacity-100 rounded-lg 
                 border border-[#E54224] transition-all duration-300 transform hover:scale-105 shadow-lg 
                 focus:outline-none focus:ring-2 focus:ring-[#E54224] focus:ring-opacity-50 border-none">
-              <a href="#" className="flex items-center justify-center font-bold text-[24px]">{book.genre}</a>
+              <a href="#" className="flex items-center justify-center font-bold text-[14px]">{book.genre}</a>
             </button>
           </div>
           <div className='mt-6 flex flex-row gap-4'>
